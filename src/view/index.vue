@@ -8,8 +8,12 @@
       <van-tab title="推荐">
         <recommend></recommend>
       </van-tab>
-      <van-tab title="排行榜">排行榜</van-tab>
-      <van-tab title="搜索">搜索</van-tab>
+      <van-tab title="排行榜">
+        <rank></rank>
+      </van-tab>
+      <van-tab title="搜索">
+        <search></search>
+      </van-tab>
     </van-tabs>
   </div>
 </template>
@@ -17,10 +21,14 @@
 <script>
 import navMenu from "../components/navMenu";
 import recommend from "../view/recommend";
+import rank from "../view/rank";
+import search from "../view/search";
 export default {
   components: {
     navMenu,
     recommend,
+    rank,
+    search,
   },
   data() {
     return {

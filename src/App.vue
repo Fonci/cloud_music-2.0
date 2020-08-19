@@ -23,7 +23,7 @@ export default {
   /* margin-top: 60px; */
 }
 .van-tabs--line .van-tabs__wrap {
-  height: 0.5rem;
+  height: 0.8rem;
 }
 .van-tab {
   font-size: 0.28rem;
