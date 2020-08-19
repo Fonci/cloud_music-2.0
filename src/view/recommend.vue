@@ -27,6 +27,28 @@
         </div>
       </div>
     </div>
+    <!-- 最新音乐 -->
+    <div class="newSong_lists">
+      <p class="cata">
+        <span class="title">最新音乐</span>
+        <!-- <span class="more">更多>></span> -->
+      </p>
+      <!-- 列表 -->
+      <van-cell-group>
+        <van-cell
+          label-class="singer_label"
+          style="height:1rem;font-size:0.32rem;text-align:left;line-height:0.5rem;"
+          v-for="(item,index) in newSongLists"
+          :key="index"
+          :title="item.name"
+          :label="item.song.artists[0].name"
+        >
+          <template #right-icon>
+            <van-icon name="play-circle-o" size="4rem;" style="line-height:1rem;font-size:0.4rem;" />
+          </template>
+        </van-cell>
+      </van-cell-group>
+    </div>
   </div>
 </template>
 
@@ -36,12 +58,14 @@ export default {
     return {
       banners: [],
       songLists: [],
+      newSongLists: [],
     };
   },
   mounted() {},
   created() {
     this.getBanner();
     this.getRecommandMusic();
+    this.getMusicNew();
   },
   methods: {
     //   banner
@@ -58,6 +82,13 @@ export default {
       });
       if (res.code == 200) {
         this.songLists = res.result;
+      }
+    },
+    // 获取最新音乐
+    async getMusicNew() {
+      const { data: res } = await this.$http.get("/personalized/newsong");
+      if (res.code == 200) {
+        this.newSongLists = res.result;
       }
     },
   },
@@ -77,7 +108,7 @@ p {
   height: 0.5rem;
   border-left: 0.05rem solid #8991f7;
   line-height: 0.5rem;
-  margin: 0.1rem 0;
+  margin: 0.2rem 0;
   display: flex;
   justify-content: space-between;
 }
@@ -101,7 +132,8 @@ p {
   height: auto;
   text-align: left;
   float: left;
-  margin-right: 0.1rem;
+  margin-left: 0.05rem;
+  margin-right: 0.05rem;
 }
 .song_tips {
   width: 100%;
@@ -120,5 +152,8 @@ p {
   text-overflow: ellipsis;
   -webkit-box-orient: vertical;
   /* 从顶部向底部垂直布置子元素 */
+}
+.singer_label {
+  margin-top: 0.1rem;
 }
 </style>
