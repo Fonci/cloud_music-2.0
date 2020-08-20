@@ -21,6 +21,7 @@ export default {
   color: #2c3e50;
   overflow-x: hidden;
   /* margin-top: 60px; */
+  font-size: 24px;
 }
 .van-tabs--line .van-tabs__wrap {
   height: 0.8rem;

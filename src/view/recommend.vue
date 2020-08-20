@@ -5,7 +5,7 @@
       class="my-swipe"
       :autoplay="3000"
       indicator-color="white"
-      style="height:2.6rem;margin-top:0.05rem;"
+      style="width:;height:2.6rem;margin-top:0.05rem;"
     >
       <van-swipe-item v-for="(item,index) in banners" :key="index">
         <a :href="item.url?item.url:'javascript:;'">
@@ -21,7 +21,12 @@
       </p>
       <!-- 列表 -->
       <div class="list_box">
-        <div class="lists" v-for="(item,index) in songLists" :key="index">
+        <div
+          class="lists"
+          v-for="(item,index) in songLists"
+          :key="index"
+          @click="goSongListsDetail(item.id)"
+        >
           <img style="width:2.4rem;height:2.4rem;" :src="item.picUrl" alt />
           <p class="song_tips">{{item.name}}</p>
         </div>
@@ -84,6 +89,11 @@ export default {
         this.songLists = res.result;
       }
     },
+    // 进入歌单详情页
+    goSongListsDetail(id) {
+      window.sessionStorage.setItem("songListsId", id);
+      this.$router.push("/songListsDetail");
+    },
     // 获取最新音乐
     async getMusicNew() {
       const { data: res } = await this.$http.get("/personalized/newsong");
@@ -137,7 +147,7 @@ p {
 }
 .song_tips {
   width: 100%;
-  height: auto;
+  height: 0.65rem;
   color: gray;
   margin-bottom: 0.1rem;
   font-size: 0.12rem;

@@ -71,14 +71,14 @@ p {
   width: 100%;
   height: auto;
   display: flex;
-  padding: 0.08rem 0.3rem;
+  padding: 0.2rem 0.3rem;
   /* background-color: #e6e6e6; */
   border-bottom: 1px solid rgba(187, 180, 180, 0.205);
   text-align: left;
 }
 img {
-  width: 0.8rem;
-  height: 0.8rem;
+  width: 1rem;
+  height: 1rem;
   margin-right: 0.2rem;
   border-radius: 0.05rem;
 }
