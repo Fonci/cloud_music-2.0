@@ -2,7 +2,7 @@
   <div class="container">
     <div class="singerRank" v-if="musicListType=='singer'">
       <div class="singer_title">云音乐歌手榜</div>
-      <van-tabs v-model="activeTab" animated @click="getName">
+      <van-tabs v-model="activeTab" @click="getName" color="#8991f7" line-height="3px">
         <van-tab
           v-for="(item,index) in singerType"
           :title="item.area"
@@ -17,9 +17,7 @@
           >
             <!-- 排序 -->
             <div class="singer_order">
-              <div
-                style="font-size:.18rem;font-weight:bold;margin-top:.25rem;margin-bottom:0.08rem;"
-              >{{index+1}}</div>
+              <div style="font-size:.36rem;font-weight:bold;margin-bottom:0.16rem;">{{index+1}}</div>
               <div
                 class="up_down"
                 style="color:red;"
@@ -33,16 +31,16 @@
             </div>
             <!-- 歌手照片 -->
             <img
-              style="width:2rem;height:1.8rem;margin-left:0.3rem;border-radius:5px;"
+              style="width:2rem;height:1.8rem;border-radius:5px;margin-top:.2rem;"
               :src="item.picUrl"
               alt
             />
             <!-- 歌手姓名 -->
-            <div style="margin-left:20px;text-align:left;">
-              <p class="singer_name">
+            <div class="singer_info">
+              <div class="singer_name">
                 {{item.name}}
                 <span v-if="item.trans">{{item.trans}}</span>
-              </p>
+              </div>
               <p class="follow_people">热度：{{(item.score/10000).toFixed(2)}}万</p>
             </div>
           </div>
@@ -312,9 +310,25 @@ export default {
 }
 .singer_list {
   width: 100%;
-  height: 2rem;
+  height: 2.2rem;
   border-bottom: 1px solid #eee;
   display: flex;
-  justify-content: space-around;
+  justify-content: start;
+}
+.singer_order,
+.singer_info {
+  margin: 0.5rem;
+}
+.singer_info {
+  margin-top: 0.7rem;
+  text-align: left;
+  font-size: 0.36rem;
+}
+.singer_name {
+  font-weight: bold;
+}
+.follow_people {
+  color: gray;
+  font-size: 0.28rem;
 }
 </style>
