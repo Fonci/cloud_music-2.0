@@ -4,8 +4,8 @@
     <nav-menu></nav-menu>
     <!-- 滑动 tabs -->
 
-    <van-tabs color="#8991f7" line-height="3px">
-      <van-tab title="推荐">
+    <van-tabs v-model="activeName" title-active-color="#8991f7" color="#8991f7" line-height="3px">
+      <van-tab title="推荐" class="recommend_tab">
         <recommend></recommend>
       </van-tab>
       <van-tab title="排行榜">
@@ -32,7 +32,7 @@ export default {
   },
   data() {
     return {
-      activeName: "1",
+      activeName: 0,
       checked: true,
     };
   },

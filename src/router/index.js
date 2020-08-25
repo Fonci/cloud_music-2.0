@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import index from '@/view/index'
 import songListsDetail from '@/view/songListsDetail'
+import listen from '@/view/listen'
 Vue.use(Router)
 
 export default new Router({
@@ -13,5 +14,9 @@ export default new Router({
         path: '/songListsDetail',
         name: 'songListsDetail',
         component: songListsDetail
+    }, {
+        path: '/listen',
+        name: 'listen',
+        component: listen
     }]
 })

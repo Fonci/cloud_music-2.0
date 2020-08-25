@@ -48,16 +48,16 @@ export default {
     //进入榜单详情
     goMusicListDetail(id) {
       // 存储所点击歌单的id,获取歌单详情页面数据
-      window.sessionStorage.setItem("MusicListId", id);
+      window.sessionStorage.setItem("songListsId", id);
       window.sessionStorage.setItem("MusicListType", "rank");
 
       // 点击进入歌单详情页
-      this.$router.push("/musicListDetail");
+      this.$router.push("/songListsDetail");
     },
     // 歌手榜详情
     goSingerList() {
       window.sessionStorage.setItem("MusicListType", "singer");
-      this.$router.push("/musicListDetail");
+      this.$router.push("/songListsDetail");
     },
   },
 };

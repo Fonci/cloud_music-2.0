@@ -9,7 +9,12 @@
     >
       <van-swipe-item v-for="(item,index) in banners" :key="index">
         <a :href="item.url?item.url:'javascript:;'">
-          <img style="width:100%;height:100%;" :src="item.imageUrl" alt />
+          <img
+            style="width:100%;height:100%;"
+            :src="item.imageUrl"
+            alt
+            @click="item.targetType==1?goListen(item.encodeId):''"
+          />
         </a>
       </van-swipe-item>
     </van-swipe>
@@ -47,6 +52,7 @@
           :key="index"
           :title="item.name"
           :label="item.song.artists[0].name"
+          @click="goListen(item.id)"
         >
           <template #right-icon>
             <van-icon name="play-circle-o" size="4rem;" style="line-height:1rem;font-size:0.4rem;" />
@@ -101,6 +107,14 @@ export default {
         this.newSongLists = res.result;
       }
     },
+    // 去音乐播放页面
+    goListen(id) {
+      if (id != 0) {
+        this.$router.push("/listen");
+        // 播放歌曲的id 传给播放页面
+        window.sessionStorage.setItem("musicId", id);
+      }
+    },
   },
 };
 </script>
@@ -126,6 +140,7 @@ p {
   font-weight: bold;
   font-size: 0.28rem;
   margin-left: 0.1rem;
+  line-height: 0.25rem;
 }
 .more {
   font-size: 0.12rem;
