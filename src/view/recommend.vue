@@ -98,6 +98,7 @@ export default {
     // 进入歌单详情页
     goSongListsDetail(id) {
       window.sessionStorage.setItem("songListsId", id);
+      window.sessionStorage.setItem("MusicListType", "rank");
       this.$router.push("/songListsDetail");
     },
     // 获取最新音乐
